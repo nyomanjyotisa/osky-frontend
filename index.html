@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>OSKY - Frontend</title>
+    
+    <script src="https://kit.fontawesome.com/048d443a6c.js" crossorigin="anonymous"></script>
+    <link href='https://fonts.googleapis.com/css?family=Montserrat' rel='stylesheet'>
+    <link rel="stylesheet" href="./style.css">
+</head>
+<body>
+    <header>
+        <div class="container"> 
+            <div class="sosmed-container">
+                <ul class="sosmed">
+                    <li><a href="https://youtube.com" onclick="return confirm('Are you sure to leave page?')"><i class="fa fa-youtube-play"></i></a></li>
+                    <li><a href="https://twitter.com" onclick="return confirm('Are you sure to leave page?')"><i class="fa fa-twitter"></i></a></li>
+                    <li><a href="https://linkedin.com" onclick="return confirm('Are you sure to leave page?')"><i class="fa fa-linkedin"></i></a></li>
+                    <li><a href="#logout">Logout</a></li>
+                    <li><a href="#dashboard">My Dashboard</a></li>
+                </ul>
+            </div>
+            <div class="header">
+                <a href="#home">
+                    <img class="logo" src="https://i.imgur.com/9fx89Br.png" alt="Example Logo" height="50px">
+                </a>
+                <div class="nav-container" id="nav-container">
+                    <ul class="nav" id="nav">
+                        <li><a href="#products" class="nav-item">Products</a></li>
+                        <li><a href="#safetytools" class="nav-item">Safety Tools</a></li>
+                        <li><a href="#training" class="nav-item">Training</a></li>
+                        <li><a href="#engagement" class="nav-item">Engagement</a></li>
+                        <li><a href="#membership" class="nav-item" id="membership" onclick="showChildren()">Membership</a>
+                            <ul class="children" id="children">
+                                <li><a href="#news">Latest News</a><div class="vertical-line news"></div></li>
+                                <li><a href="#subscribe">Subscribe to Newsletters</a><div class="vertical-line subs"></div></li>
+                                <li><a href="#videos">Videos</a><div class="vertical-line vid"></div></li>
+                                <li><a href="#publications">Publications</a></li>
+                                <a href="#" class="close">
+                                    <i class="fa fa-window-close"></i>
+                                </a>
+                            </ul>
+                        </li>
+                        <li><a href="#news" class="nav-item">News</a></li>
+                        <li><a href="#" class="nav-item">About</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <script>
+        var header = document.getElementById("nav");
+        var items = header.getElementsByClassName("nav-item");
+        var children = document.getElementById('children');
+        for (var i = 0; i < items.length; i++) {
+            items[i].addEventListener("click", function() {
+            var current = document.getElementsByClassName("active");
+            if (current.length > 0) { 
+                current[0].className = current[0].className.replace(" active", "");
+            }
+                this.className += " active";
+            });
+        }
+
+        window.addEventListener('mouseup',function(event){
+            if(event.target != children && event.target.parentNode != children){
+                children.style.display = 'none';
+            }
+        }); 
+
+        function showChildren(){
+            children.style.display = 'flex';
+        }
+    </script>
+</body>
+</html>
